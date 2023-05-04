@@ -26,7 +26,7 @@ Rectangle {
     anchors.fill: parent
     width: parent.width
     height: parent.height
-    color: "#24273a"
+    color: "#1e1e2e"
 
     LayoutMirroring.enabled: Qt.locale().textDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
@@ -37,13 +37,13 @@ Rectangle {
         target: sddm
 
         onLoginSucceeded: {
-            errorMessage.color = "#a6da95"
+            errorMessage.color = "#a6e3a1"
             errorMessage.text = qsTr("Login succeeded")
         }
 
         onLoginFailed: {
             password.text = ""
-            errorMessage.color = "#ed8796"
+            errorMessage.color = "#cba6f7"
             errorMessage.text = qsTr("Login failed")
         }
     }
@@ -55,11 +55,11 @@ Rectangle {
         Rectangle {
             id: rectangle
             anchors.centerIn: parent
-            width: Math.max(320, mainColumn.implicitWidth + 50)
-            height: Math.max(320, mainColumn.implicitHeight + 50)
+            width: Math.max(420, mainColumn.implicitWidth + 50)
+            height: Math.max(420, mainColumn.implicitHeight + 50)
             color: "transparent"
-            border.color: "#91D7E3"
-            border.width: 3
+            border.color: "#cba6f7"
+            border.width: 4
             radius: 20
 
             Column {
@@ -73,7 +73,7 @@ Rectangle {
                     height: 256
                     width: 256
                     horizontalAlignment: Text.AlignHCenter
-                    source: "assets/images/logo.png"
+                    source: "assets/images/a.png"
                 }
 
                 Column {
@@ -87,9 +87,9 @@ Rectangle {
                         textRole: "name"
                         displayText: currentIndex === -1 ? qsTr("Session") : currentText
                         model: sessionModel
-                        background: Rectangle { color: "#181926"; radius: 7 }
+                        background: Rectangle { color: "#181825"; radius: 7 }
                         contentItem: Text {
-                          color: session.currentIndex === -1 ? "#939AB7" : "#f4dbd6"
+                          color: session.currentIndex === -1 ? "#939AB7" : "#cba6f7"
                           text: session.displayText
                           font.pixelSize: 13;
                           padding: 10
@@ -108,9 +108,9 @@ Rectangle {
                         width: parent.width; height: 40
                         text: userModel.lastUser
                         font.pixelSize: 13
-                        palette.text: "#7DC4E4"
+                        palette.text: "#cdd6f4"
                         placeholderText: qsTr("Username")
-                        background: Rectangle { color: "#181926"; radius: 7 }
+                        background: Rectangle { color: "#181825"; radius: 7 }
                         Keys.onPressed: {
                             if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
                                 sddm.login(name.text, password.text, sessionIndex)
@@ -130,9 +130,9 @@ Rectangle {
                         font.pixelSize: 13
                         KeyNavigation.backtab: name; KeyNavigation.tab: session
                         echoMode: TextInput.Password
-                        palette.text: "#7DC4E4"
+                        palette.text: "#cdd6f4"
                         placeholderText: qsTr("Password")
-                        background: Rectangle { color: "#181926"; radius: 7 }
+                        background: Rectangle { color: "#181825"; radius: 7 }
                         Keys.onPressed: {
                             if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
                                 sddm.login(name.text, password.text, sessionIndex)
@@ -146,7 +146,7 @@ Rectangle {
                     width: parent.width
 
                     Text {
-                        color: "#EE99A0"
+                        color: "#cba6f7"
                         id: errorMessage
                         anchors.horizontalCenter: parent.horizontalCenter
                         text: qsTr("Enter your username and password")
@@ -166,7 +166,7 @@ Rectangle {
                         text: qsTr("Login")
                         width: parent.btnWidth
                         KeyNavigation.backtab: layoutBox; KeyNavigation.tab: shutdownButton
-                        palette.buttonText: "#a6da95"
+                        palette.buttonText: "#a6e3a1"
                         background: Rectangle { color: "transparent" }
                         icon.source: "assets/icons/login-circle-fill.svg"
 
@@ -184,7 +184,7 @@ Rectangle {
                         text: qsTr("Shutdown")
                         width: parent.btnWidth
                         KeyNavigation.backtab: loginButton; KeyNavigation.tab: rebootButton
-                        palette.buttonText: "#eed49f"
+                        palette.buttonText: "#f9e2af"
                         background: Rectangle { color: "transparent" }
                         icon.source: "assets/icons/restart-fill.svg"
 
